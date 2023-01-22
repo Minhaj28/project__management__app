@@ -19,7 +19,7 @@ function set__data(data)
     table_data2.innerText=data.product_name;
     table_data3.innerText=data.price;
     table_data4.innerText="Edit";
-    table_data5.innerText="Delete";
+    table_data5.innerHTML= '<p onclick="delete__product(this)">Delete</p>';
 
     table.appendChild(table_row);
 }
@@ -32,4 +32,12 @@ function add__product(){
     set__data({Id,product_name,price});
 
     // console.log(Id, product_name, price);
+}
+
+function delete__product(cell)
+{
+   
+    const table_row = cell.parentNode.parentNode;
+    table_row.parentNode.removeChild(table_row);
+
 }
