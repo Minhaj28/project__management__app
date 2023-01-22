@@ -24,10 +24,10 @@
                     <label for="price">Price</label>
                     <input type="number" id="price" placeholder="Price">
                 </div>
-                <div class="input__field">
-                    <button type="submit" id="add__btn">Add Product</button>
-                </div>
             </form>
+            <div class="input__field">
+                <button type="submit" id="add__btn" onclick= "add__product()">Add Product</button>
+            </div>
         </div>
         <div>
             <table>
@@ -38,12 +38,13 @@
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
-                <tbody>
+                <tbody id="data__table">
 
                 </tbody>
             </table>
         </div>
     </div>
+    <script src="./JS/scripts.js"></script>
 </body>
 
 </html>
