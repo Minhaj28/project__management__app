@@ -1,4 +1,6 @@
-
+const MAX_NAME_LENGTH = 120;
+const MIN_PRICE_LIMIT = 1;
+const MAX_PRICE_LIMIT = 100000;
 function get__input(text){
     return document.getElementById(text).value;
 }
@@ -24,12 +26,51 @@ function set__data(data)
     table.appendChild(table_row);
 }
 
+function showError({ID,massage}){
+    const errorElement = document.getElementById(ID);
+    errorElement.innerText = massage;
+    errorElement.style.color = 'Red';
+}
+
+function isvalid({Id,product_name,price}){
+
+    let isvalidInput = true;
+    if(!Boolean(Id))
+    {
+        showError({
+            ID : 'errorId',
+            massage : 'Invalid ID',
+        })
+        isvalidInput = false;
+    }
+
+    if(!Boolean(product_name) || product_name.length>MAX_NAME_LENGTH){
+        showError({
+            ID : 'errorProductName',
+            massage : 'Invalid Name',
+        })
+        isvalidInput = false;
+    }
+
+    if(!Boolean(price) || price > MAX_PRICE_LIMIT || price < MIN_PRICE_LIMIT){
+        showError({
+            ID : 'errorProductPrice',
+            massage : 'Invalid Price',
+        })
+        isvalidInput = false;
+    }
+
+    return isvalidInput;
+}
+
 function add__product(){
     const Id = get__input("ID");
     const product_name = get__input("product__name");
     const price = get__input("price");
 
-    set__data({Id,product_name,price});
+    const get__data = isvalid({Id,product_name,price});
+
+    Boolean(get__data) && set__data({Id,product_name,price});
 
     // console.log(Id, product_name, price);
 }

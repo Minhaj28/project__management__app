@@ -88,3 +88,7 @@ p:hover{
 .input__field input{
     width: 330px;
 }
+
+.error{
+    text-align: center;
+}
